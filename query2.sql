@@ -1,0 +1,23 @@
+CREATE TABLE t_board(
+	i_board INT unsigned PRIMARY KEY AUTO_INCREMENT,
+	title varCHAR(30) NOT NULL,
+	content TEXT NOT NULL,
+	cnt SMALLINT UNSIGNED DEFAULT '0',
+	regdatetime DATETIME DEFAULT NOW()	
+);
+
+CREATE TABLE t_comment(
+	i_comment INT unsigned AUTO_INCREMENT,
+	i_board INT UNSIGNED,
+	cmt VARCHAR(300) NOT NULL,
+	r_datetime DATETIME DEFAULT NOW(),
+	FOREIGN KEY (i_board) REFERENCES T_BOARD(i_board),
+	PRIMARY KEY(i_comment)
+);
+
+CREATE TABLE t_user(
+	uid VARCHAR(30) PRIMARY KEY,
+	upw VARCHAR(50) NOT NULL,
+	nm VARCHAR(10) NOT NULL,
+	r_datetime DATETIME DEFAULT NOW()
+);
